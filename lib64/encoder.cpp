@@ -15,10 +15,29 @@ static inline void eightBitToTableVal(const uint32_t &hold24, char *buffz) {
 	buffz[2] = base64Table[(hold24 >> 6) & 0x3f];
 	buffz[3] = base64Table[hold24 & 0x3f];
 }
-static inline void TableValToEightBit(const uint32_t &hold24, char *buffz) {
-	buffz[0] = (hold24 >> 16) & 0xff;
-	buffz[1] = (hold24 >> 8) & 0xff;
-	buffz[2] = hold24 & 0xff;
+
+static inline char CharDecode(const char &tmp)
+{
+	if (tmp >= 'A' && tmp <= 'Z')
+	{
+		return tmp - 'A';
+	}
+	else if (tmp >= 'a' && tmp <= 'z')
+	{
+		return tmp - 71;
+	}
+	else if (tmp >= '0' && tmp <= '9')
+	{
+		return tmp + 4;
+	}
+	else if (tmp == '+')
+	{
+		return 62;
+	}
+	else if (tmp == '/')
+	{
+		return 63;
+	}
 }
 namespace B64 {
 	std::string encode(std::string c)
@@ -52,33 +71,17 @@ namespace B64 {
 		std::stringstream buffer;
 		uint32_t hold24 = 0;
 		uint8_t sexesRead = 0;
+		unsigned char t[4];
 		for (size_t i = 0; i < c.length(); ++i)
 		{
-			hold24 <<= 6;
-			char tmp = c[i] & 0x3f;
-			if (tmp >= 'A' && tmp <= 'Z')
-			{
-				tmp = tmp - 'A';
-			}
-			else if (tmp >='a' && tmp <'z')
-			{
-				tmp = tmp - 71;
-			}
-			else if (tmp >= '0' && tmp <= '9')
-			{
-				tmp = tmp + 4;
-			}
-			else if (tmp == '+')
-			{
-				tmp = 62;
-			}
-			else if (tmp == '/')
-			{
-				tmp = 63;
-			}
+			char tmp = c[i];
+			tmp = CharDecode(tmp);
+			t[sexesRead] = tmp;
 			++sexesRead;
 			if (!(sexesRead % 4)) {
-				TableValToEightBit(hold24, buff);
+				buff[0] = ((t[0] << 2)&0xfc) | ((t[1] & 0x30)>>4);
+				buff[1] = ((t[1] & 0xf)<<4) | ((t[2]&0x3c)>>2);
+				buff[2] = ((t[2] & 0x3) << 6) | t[3] & 0x3f;
 				buffer << buff[0] << buff[1] << buff[2];
 				sexesRead = 0;
 			}
