@@ -10,8 +10,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Catch_Dummy", "Catch_Dummy\Catch_Dummy.vcxproj", "{DA2B36B2-E722-49F5-B3F9-851B1AC51B59}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6540603F-6216-4435-8839-27ADAEB210A1} = {6540603F-6216-4435-8839-27ADAEB210A1}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lib64", "lib64\lib64.vcxproj", "{6540603F-6216-4435-8839-27ADAEB210A1}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Converter", "Converter\Converter.vcxproj", "{A8A2176A-2823-4A59-BCAD-C604E82AD1B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +42,14 @@ Global
 		{6540603F-6216-4435-8839-27ADAEB210A1}.Release|x64.Build.0 = Release|x64
 		{6540603F-6216-4435-8839-27ADAEB210A1}.Release|x86.ActiveCfg = Release|Win32
 		{6540603F-6216-4435-8839-27ADAEB210A1}.Release|x86.Build.0 = Release|Win32
+		{A8A2176A-2823-4A59-BCAD-C604E82AD1B5}.Debug|x64.ActiveCfg = Debug|x64
+		{A8A2176A-2823-4A59-BCAD-C604E82AD1B5}.Debug|x64.Build.0 = Debug|x64
+		{A8A2176A-2823-4A59-BCAD-C604E82AD1B5}.Debug|x86.ActiveCfg = Debug|Win32
+		{A8A2176A-2823-4A59-BCAD-C604E82AD1B5}.Debug|x86.Build.0 = Debug|Win32
+		{A8A2176A-2823-4A59-BCAD-C604E82AD1B5}.Release|x64.ActiveCfg = Release|x64
+		{A8A2176A-2823-4A59-BCAD-C604E82AD1B5}.Release|x64.Build.0 = Release|x64
+		{A8A2176A-2823-4A59-BCAD-C604E82AD1B5}.Release|x86.ActiveCfg = Release|Win32
+		{A8A2176A-2823-4A59-BCAD-C604E82AD1B5}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

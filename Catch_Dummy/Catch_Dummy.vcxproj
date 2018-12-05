@@ -132,6 +132,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="buffer_decode_tests.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="string_decode_tests.cpp" />
     <ClCompile Include="string_encode_tests.cpp" />
