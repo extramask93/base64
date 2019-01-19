@@ -1,0 +1,3 @@
+[submodule "Base64Lib"]
+	path = Base64Lib
+	url = https://github.com/extramask93/Base64Lib.git
